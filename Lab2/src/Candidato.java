@@ -6,7 +6,7 @@ public class Candidato {
     private String nombre;
     private String partido;
     private Queue<Voto> votosRecibidos;
-    public Candidato(int id, String nombre, String partido, Queue<Voto> votosRecibidos){
+    public Candidato(int id, String nombre, String partido){
         this.id = id;
         this.nombre = nombre;
         this.partido = partido;
@@ -36,4 +36,4 @@ public class Candidato {
     public void agregarVoto(Voto voto){
         votosRecibidos.add(voto);
     }
-} // FIN CLASE CANDIDATO
+}

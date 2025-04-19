@@ -1,31 +1,35 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-private String obtenerTimestamp() { //Ya que votante no cuenta con timestamp copilot me hizo crear esto ns q opinan?
-    return java.time.LocalTime.now().toString();
-}
 public class UrnaElectoral {
     private LinkedList<Candidato> listaCandidatos;
     private Stack<Voto> historialVotos;
     private Queue<Voto> votosReportados;
     private int idCounter;
-    // Este me recomienda usarlo cuando quiero ocupar valores antiguos por lo que entendí
-    /*public UrnaElectoral(LinkedList<Candidato> listaCandidatos, Stack<Voto> historialVotos,  Queue<Voto> votosReportados, int idCounter) {
-        this.listaCandidatos = listaCandidatos;
-        this.historialVotos = historialVotos;
-        this.votosReportados = votosReportados;
-        this.idCounter = idCounter;
-    }
-    // No sé cual usar, copilot me recomienda este para cuando se inicializa en cero, con datos nuevos
     public UrnaElectoral() {
         this.listaCandidatos = new LinkedList<>();
         this.historialVotos = new Stack<>();
         this.votosReportados = new LinkedList<>();
         this.idCounter = 1;
-    } */
-    public boolean verificarVotante(Votante votante){
-        votante.getYaVoto();
     }
+    public Stack<Voto> getHistorialVotos() {
+        return historialVotos;
+    }
+    public Queue<Voto> getVotosReportados() {
+        return votosReportados;
+    }
+    public LinkedList <Candidato> getListaCandidatos() {
+        return listaCandidatos;
+    }
+    public boolean verificarVotante(Votante votante){
+        int id = votante.getID();
+        for (Voto voto : historialVotos) {
+            if (voto.getVotanteID() == id) {
+                return true;
+            }
+        }
+        return false;
+       }
     public boolean registrarVoto(Votante votante, int candidatoID) {
         if(votante.getYaVoto()==true){
             System.out.println("Votante ya registrado");
@@ -56,7 +60,7 @@ public class UrnaElectoral {
         System.out.println("El voto reportado no se ha encontrado");
         return false;
     }
-    public String obtenerResultados() { // no lo entiendo bien pero copilot me dice que hay que hacer esto para el metodo
+    public String obtenerResultados() {
         StringBuilder resultados = new StringBuilder();
         for (Candidato candidato : listaCandidatos) {
             resultados.append("Candidato ").append(candidato.getNombre())
@@ -64,5 +68,11 @@ public class UrnaElectoral {
                     .append(candidato.getVotosRecibidos().size()).append(" votos.\n");
         }
         return resultados.toString();
+    }
+    public void agregarCandidato(Candidato candidato) {
+        listaCandidatos.add(candidato);
+    }
+    private String obtenerTimestamp() {
+        return java.time.LocalTime.now().toString();
     }
 }

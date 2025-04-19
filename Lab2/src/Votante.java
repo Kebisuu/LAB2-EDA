@@ -26,6 +26,6 @@ public class Votante {
         this.yaVoto = yaVoto;
     }
     public void marcarComoVotado() {
-            this.yaVoto = true;
+        this.yaVoto = true;
     }
 }

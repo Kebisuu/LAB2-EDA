@@ -12,7 +12,7 @@ public class Voto{
         this.candidatoID = candidatoID;
         this.timestamp = timestamp;
     }
-    public int getID(){                                 //gets
+    public int getID(){
         return id;
     }
     public int getVotanteID(){
@@ -24,7 +24,7 @@ public class Voto{
     public String getTimestamp(){
         return timestamp;
     }
-    public void setID(int id){                         //sets
+    public void setID(int id){
         this.id = id;
     }
     public void setVotanteID(int votanteID){
@@ -36,4 +36,4 @@ public class Voto{
     public void setTimestamp(String timestamp){
         this.timestamp = timestamp;
     }
-} // FIN CLASE VOTO
+}
